@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins&display=swap" rel="stylesheet">
+    <title>Reservation page</title>
+</head>
+<body>
+    <header class="test">  
+        <div class="nav">
+            <img class="logo1" src="logo.png" alt="logo">
+            <span class="start">
+                <b>INDIAN RAILWAYS RESERVATION ENQUIRY</b>
+            </span>
+            <span class="control">
+            <a href="signup.html">EMP Login</a> &nbsp; &nbsp; &nbsp; &nbsp;
+            <a href="project.html">Home</a> &nbsp; &nbsp; &nbsp; &nbsp;
+            <a href="http://localhost:3001/" target="_blank">PNR Enquiry</a> &nbsp; &nbsp; &nbsp;
+            <a href="https://irctc.com/contact.html">Contact us</a> &nbsp; &nbsp; &nbsp;
+            Social Media:
+            <a href="https://twitter.com/railwayseva?lang=en"><i class='bx bxl-twitter'></i></a>
+            </span>
+            <img class="logo2" src="logo 2.png" alt="Irctc">
+            </div>
+    </header>
+    <div class="header">
+        <marquee>Indian railways and government of India is moving towards a digitized and cashless economy.</marquee> <!-- Change -->
+    </div>
+    <div class="Booking">
+        <span><b>BOOK TICKET <br>
+        (Submit Query Details to the Database)</b> </span><hr>
+        <form action="/booking" method="POST" onsubmit="return validateForm()">
+            <label for="trainNo">Enter Train Number</label>
+            <input type="text" placeholder="Train Number" id="trainNo" name="trainNo" onkeypress="return onlyNumberKey(event)">
+            <br>
+            OR 
+            <br>
+            Search Trains <br> 
+            <label for="source">Enter Boarding Station</label>
+            <input type="text" placeholder="Boarding Station" id="source" name="source">
+            <br>
+            <label for="destination">Enter Destination Station</label>
+            <input type="text" placeholder="Destination Station" id="destination" name="destination">
+            <br>
+            <label for="date">Enter Journey Date</label>
+            <input type="date" id="date" name="date">
+
+        <br>
+        <label for="quota">Select Quota</label>
+        <select name="quota" id="quota">
+            <option value="general">General Quota</option>
+            <option value="ladies">Ladies</option>
+            <option value="lowerberth">LowerBerth/SeniorCitizen</option>
+            <option value="disability">Person with Disability</option>
+            <option value="tatkal">Tatkal</option>
+            <option value="pretatkal">Premium Tatkal</option>
+        </select>
+        <br>
+        <label for="class">Class</label>
+        <select name="class" id="class">
+            <option value="All">All Class</option>
+            <option value="EC">Executive Chair Class (EC)</option>
+            <option value="cc">AC Chair CAR (CC)</option>
+            <option value="HA1">First Class (1AC)</option>
+            <option value="AC2">AC 2-Tier(2AC)</option>
+            <option value="AC3">AC 3-Tier(3AC)</option>
+            <option value="AC3E">AC 3-Economy(3E)</option>
+            <option value="EV">Vistadome AC (EV)</option>
+            <option value="SL">Sleeper Class (SL)</option>
+            <option value="2S">Second Siting (2S)</option>
+        </select>
+        <br>
+        <input type="checkbox" id="cb1">
+        <label for="cb1">Search tickets for longer routes if not available in the given route</label>
+        <br>
+        <button type="submit">Submit</button>
+        </form>
+        <!-- <script src="project.js">
+            // script.js
+
+
+    
+        </script> -->
+        
+       
+    </div>
+    <script>
+        function validateForm() {
+            // Check train number input
+            var trainNo = document.getElementById('trainNo').value;
+            if (trainNo !== "" && !(/^\d+$/.test(trainNo))) {
+                alert("Train number must contain only digits.");
+                return false;
+            }
+
+            // Check other inputs
+            var source = document.getElementById('source').value;
+            var destination = document.getElementById('destination').value;
+            var date = document.getElementById('date').value;
+
+            if (trainNo === "" && (source === "" || destination === "" || date === "")) {
+                alert("Please enter either Train Number or Boarding Station, Destination Station, and Journey Date.");
+                return false;
+            }
+
+            return true; // Allow form submission
+        }
+
+        function onlyNumberKey(event) {
+            // Allow only numeric input for train number field
+            var charCode = (event.which) ? event.which : event.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                event.preventDefault();
+            }
+            return true;
+        }
+    </script>
+    <!-- <footer>
+        While booking ensure you enter the correct date and check for trains which orginate around 12
+        Enter correct passenger details
+        Carry ID with you
+    </footer> -->
+</body>
+</html>

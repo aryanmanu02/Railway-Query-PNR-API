@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form Submission</title>
+    <style>
+        body{
+        background-image: url("trainimage.jpeg");
+        background-size: cover;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: transparent;
+            /* background: url('trainimage.jpeg') no-repeat center center; */
+            background-size: cover;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            color: #fff;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: none;
+            background: rgba(255, 255, 255, 0.8);
+            color: #000;
+        }
+        .form-group button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .form-group button:hover {
+            background-color: #218838;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(233, 236, 239, 0.8);
+            border-radius: 10px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Submit Employee Details</h2>
+    <form id="employeeForm">
+        <div class="form-group">
+            <label for="employeeName">Employee Name:</label>
+            <input type="text" id="employeeName" name="employeeName" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="employeeID">Employee ID:</label>
+            <input type="text" id="employeeID" name="employeeID" required>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10}">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <div class="output" id="output"></div>
+</div>
+
+<script>
+    document.getElementById('employeeForm').addEventListener('submit', function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Get the values from the form fields
+        const employeeName = document.getElementById('employeeName').value;
+        const email = document.getElementById('email').value;
+        const employeeID = document.getElementById('employeeID').value;
+        const phoneNumber = document.getElementById('phoneNumber').value;
+
+        // Display the output
+        const outputDiv = document.getElementById('output');
+        outputDiv.innerHTML = `
+            <h3>Submitted Employee Details</h3>
+            <p><strong>Employee Name:</strong> ${employeeName}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Employee ID:</strong> ${employeeID}</p>
+            <p><strong>Phone Number:</strong> ${phoneNumber}</p>
+        `;
+    });
+</script>
+
+</body>
+</html>
